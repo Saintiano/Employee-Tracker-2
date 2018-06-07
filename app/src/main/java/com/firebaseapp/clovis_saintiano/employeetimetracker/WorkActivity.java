@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.firebaseapp.clovis_saintiano.employeetimetracker.model.Company_Details;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -23,7 +24,8 @@ public class WorkActivity extends AppCompatActivity {
     private Context mContext = WorkActivity.this;
 
 
-    EditText editTextCompanyName, editTextCompanyDepartment, editTextCompanyAssignment, editTextCompanyYear;
+    EditText editTextCompanyName, editTextCompanyDepartment, editTextCompanyAssignment, editTextCompanyYear, editTextTotalTime;
+    EditText editTextApproved, editTextRejected;
 
     Spinner spinnerDate, spinnerDay, spinnerMonth;
 
@@ -45,11 +47,13 @@ public class WorkActivity extends AppCompatActivity {
         databaseReferenceCompanyDatails = FirebaseDatabase.getInstance().getReference("company");
 
 
-
+        editTextRejected = (EditText) findViewById(R.id.edit_reject_assignment);
+        editTextApproved = (EditText) findViewById(R.id.edit_approve_assignment);
         editTextCompanyName = (EditText) findViewById(R.id.edit_company_name);
         editTextCompanyDepartment = (EditText) findViewById(R.id.edit_department);
         editTextCompanyAssignment = (EditText) findViewById(R.id.edit_assignment);
         editTextCompanyYear = (EditText) findViewById(R.id.edit_year);
+        editTextTotalTime = (EditText) findViewById(R.id.edit_totalExpectedTime);
 
         spinnerDate = (Spinner) findViewById(R.id.dateAdd);
         spinnerDay = (Spinner) findViewById(R.id.daysAdd);
@@ -80,6 +84,12 @@ public class WorkActivity extends AppCompatActivity {
         String assignment = editTextCompanyAssignment.getText().toString().trim();
         String year = editTextCompanyYear.getText().toString().trim();
 
+        String totalExpectedTime = editTextTotalTime.getText().toString().trim();
+        double totalTime = Double.parseDouble(totalExpectedTime);
+
+        String reject = editTextRejected.getText().toString().trim();
+        String approved = editTextApproved.getText().toString().trim();
+
 
         String date = spinnerDate.getSelectedItem().toString();
         String day = spinnerDay.getSelectedItem().toString();
@@ -90,7 +100,9 @@ public class WorkActivity extends AppCompatActivity {
 
             String id = databaseReferenceCompanyDatails.push().getKey();
 
+            Company_Details newDetails = new Company_Details(id, company, department, assignment, year, totalTime, date, day, month, reject, approved);
 
+            databaseReferenceCompanyDatails.child(id).setValue(newDetails);
 
             Toast.makeText(WorkActivity.this, "Company Assignment Created", Toast.LENGTH_LONG).show();
 
@@ -107,11 +119,6 @@ public class WorkActivity extends AppCompatActivity {
         }
 
     }
-
-
-
-
-
 
 
 
