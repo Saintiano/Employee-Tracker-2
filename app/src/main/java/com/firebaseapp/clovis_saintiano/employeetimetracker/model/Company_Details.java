@@ -7,7 +7,6 @@ public class Company_Details {
     String companyDepartmentt;
     String companyAssignment;
     String companyYear;
-    double expectedTotalTime;
     String userDate;
     String userDay;
     String userMonth;
@@ -18,13 +17,12 @@ public class Company_Details {
 
     }
 
-    public Company_Details(String companyId, String companyName, String companyDepartmentt, String companyAssignment, String companyYear, double expectedTotalTime, String userDate, String userDay, String userMonth, String rejected, String approved) {
+    public Company_Details(String companyId, String companyName, String companyDepartmentt, String companyAssignment, String companyYear, String userDate, String userDay, String userMonth, String rejected, String approved) {
         this.companyId = companyId;
         this.companyName = companyName;
         this.companyDepartmentt = companyDepartmentt;
         this.companyAssignment = companyAssignment;
         this.companyYear = companyYear;
-        this.expectedTotalTime = expectedTotalTime;
         this.userDate = userDate;
         this.userDay = userDay;
         this.userMonth = userMonth;
@@ -70,14 +68,6 @@ public class Company_Details {
 
     public void setCompanyYear(String companyYear) {
         this.companyYear = companyYear;
-    }
-
-    public double getExpectedTotalTime() {
-        return expectedTotalTime;
-    }
-
-    public void setExpectedTotalTime(double expectedTotalTime) {
-        this.expectedTotalTime = expectedTotalTime;
     }
 
     public String getUserDate() {

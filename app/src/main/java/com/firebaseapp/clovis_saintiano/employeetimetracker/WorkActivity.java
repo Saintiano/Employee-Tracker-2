@@ -84,8 +84,8 @@ public class WorkActivity extends AppCompatActivity {
         String assignment = editTextCompanyAssignment.getText().toString().trim();
         String year = editTextCompanyYear.getText().toString().trim();
 
-        String totalExpectedTime = editTextTotalTime.getText().toString().trim();
-        double totalTime = Double.parseDouble(totalExpectedTime);
+       // String totalExpectedTime = editTextTotalTime.getText().toString().trim();
+        //double totalTime = Double.parseDouble(totalExpectedTime);
 
         String reject = editTextRejected.getText().toString().trim();
         String approved = editTextApproved.getText().toString().trim();
@@ -100,7 +100,7 @@ public class WorkActivity extends AppCompatActivity {
 
             String id = databaseReferenceCompanyDatails.push().getKey();
 
-            Company_Details newDetails = new Company_Details(id, company, department, assignment, year, totalTime, date, day, month, reject, approved);
+            Company_Details newDetails = new Company_Details(id, company, department, assignment, year, date, day, month, reject, approved);
 
             databaseReferenceCompanyDatails.child(id).setValue(newDetails);
 

@@ -30,9 +30,9 @@ public class HomeActivity extends AppCompatActivity {
         private Context mContext = HomeActivity.this;
 
 
-    RecyclerView recyclerView;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+        RecyclerView recyclerView;
+        FirebaseDatabase firebaseDatabase;
+        DatabaseReference databaseReference;
 
 
 
@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
             recyclerView = (RecyclerView) findViewById(R.id.show_dashboard_recyclerview);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
-            Toast.makeText(HomeActivity.this, "Fetching Medications",Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "Fetching Dashboard",Toast.LENGTH_SHORT).show();
 
 
 
@@ -84,6 +84,7 @@ public class HomeActivity extends AppCompatActivity {
                 viewHolder.set_Date(model.getUserDate());
                 viewHolder.set_Day(model.getUserDay());
                 viewHolder.set_Month(model.getUserMonth());
+                viewHolder.set_Year(model.getCompanyYear());
                 viewHolder.set_CompanyName(model.getCompanyName());
                 viewHolder.set_Rejected(model.getRejected());
                 viewHolder.set_Approved(model.getApproved());
